@@ -57,7 +57,12 @@ public struct Noi<Model: Codable, Delegate: NoiDelegate> {
                            parameters: [String: String]? = nil,
                            success successCallback: @escaping NoiSuccessCompletionHandler
     ) {
-        self.noiRequest(delegate, method: .get, path: path, url: url, headers: headers, parameters: parameters, success: successCallback)
+        self.noiRequest(delegate, method: .get,
+                        path: path,
+                        url: url,
+                        headers: headers,
+                        parameters: parameters,
+                        success: successCallback)
     }
 
     /**
@@ -81,7 +86,12 @@ public struct Noi<Model: Codable, Delegate: NoiDelegate> {
                             parameters: [String: String]? = nil,
                             success successCallback: @escaping NoiSuccessCompletionHandler
     ) {
-        self.noiRequest(delegate, method: .post, path: path, url: url, headers: headers, parameters: parameters, success: successCallback)
+        self.noiRequest(delegate, method: .post,
+                        path: path,
+                        url: url,
+                        headers: headers,
+                        parameters: parameters,
+                        success: successCallback)
     }
 
     /**
@@ -105,7 +115,12 @@ public struct Noi<Model: Codable, Delegate: NoiDelegate> {
                            parameters: [String: String]? = nil,
                            success successCallback: @escaping NoiSuccessCompletionHandler
     ) {
-        self.noiRequest(delegate, method: .put, path: path, url: url, headers: headers, parameters: parameters, success: successCallback)
+        self.noiRequest(delegate, method: .put,
+                        path: path,
+                        url: url,
+                        headers: headers,
+                        parameters: parameters,
+                        success: successCallback)
     }
 
     /**
@@ -128,19 +143,23 @@ public struct Noi<Model: Codable, Delegate: NoiDelegate> {
                               headers: [String: String]? = nil,
                               success successCallback: @escaping NoiSuccessCompletionHandler
     ) {
-        self.noiRequest(delegate, method: .delete, path: path, url: url, headers: headers, success: successCallback)
+        self.noiRequest(delegate, method: .delete,
+                        path: path,
+                        url: url,
+                        headers: headers,
+                        success: successCallback)
     }
 
 }
 
 private extension Noi {
     static func noiRequest(_ delegate: NoiDelegate?,
-                                   method: NoiHTTPMethod,
-                                   path: String,
-                                   url: String,
-                                   headers: [String: String]? = nil,
-                                   parameters: [String: String]? = nil,
-                                   success successCallback: @escaping NoiSuccessCompletionHandler
+                           method: NoiHTTPMethod,
+                           path: String,
+                           url: String,
+                           headers: [String: String]? = nil,
+                           parameters: [String: String]? = nil,
+                           success successCallback: @escaping NoiSuccessCompletionHandler
      ) {
 
         guard let request = self.getRequestObject(method: method,
@@ -198,9 +217,9 @@ private extension Noi {
     }
 
     static func getRequestObject(method: NoiHTTPMethod,
-                                         url: String,
-                                         parameters: [String: String]? = nil,
-                                         headers: [String: String]? = nil
+                                 url: String,
+                                 parameters: [String: String]? = nil,
+                                 headers: [String: String]? = nil
     ) -> URLRequest? {
 
         var bodyData: Data?

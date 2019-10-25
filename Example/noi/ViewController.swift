@@ -5,11 +5,10 @@
 //  Created by JesusNieves on 10/04/2019.
 //  Copyright (c) 2019 JesusNieves. All rights reserved.
 //
-
 import UIKit
 import Noi
 
-struct model: Codable {
+struct Model: Codable {
     let name: String
 }
 
@@ -27,11 +26,10 @@ class ViewController: UIViewController {
 
 }
 
-
 extension ViewController: NoiDelegate {
-    
+
     func onNoiError(_ type: NoiErrorType) {
         print("Error")
     }
-    
+
 }
