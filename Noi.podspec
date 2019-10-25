@@ -17,14 +17,14 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
-  s.description      = "Lite HTTP RestClient for JSON responses"
+  s.description      = "Another restclient to use with your RestApi"
   s.homepage         = 'https://github.com/nievesjesus/noi'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Jesus Nieves' => 'yo@nievesjesus.com' }
   s.source           = { :git => 'https://github.com/nievesjesus/noi.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/nievesjesus'
-
+  s.swift_version    = '4.2'
   s.ios.deployment_target = '8.0'
 
   s.source_files = 'Noi/Classes/**/*'
