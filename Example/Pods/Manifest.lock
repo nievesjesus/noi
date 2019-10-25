@@ -1,0 +1,16 @@
+PODS:
+  - Noi (0.1.0)
+
+DEPENDENCIES:
+  - Noi (from `../`)
+
+EXTERNAL SOURCES:
+  Noi:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Noi: bceb2d3336709ed198218394053646e168a2c0dc
+
+PODFILE CHECKSUM: 9ea5d2301b5ed4a3c5fac4f6ebc1410b45e037fd
+
+COCOAPODS: 1.6.1
