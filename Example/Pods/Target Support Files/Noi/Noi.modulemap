@@ -1,0 +1,6 @@
+framework module Noi {
+  umbrella header "Noi-umbrella.h"
+
+  export *
+  module * { export * }
+}
