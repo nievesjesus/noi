@@ -14,7 +14,7 @@
 # update_fastlane
 
 default_platform(:ios)
-podspec_name = "noi.podspec"
+podspec_name = "Noi.podspec"
 
 platform :ios do
 
