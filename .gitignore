@@ -1,0 +1,6 @@
+# Ruby
+Gemfile.lock
+
+# CocoaPods
+Example/Pods
+Podfile.lock
