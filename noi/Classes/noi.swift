@@ -32,7 +32,7 @@ Noi a easy way to make HTTP request
 - Parameters:
     - Model:Your codable object.
 */
-public struct Noi<Model: Codable, Delegate: NoiDelegate> {
+public struct Noi<Model: Codable> {
 
     public typealias NoiSuccessCompletionHandler = (_ response: Model) -> Void
 
@@ -171,10 +171,7 @@ private extension Noi {
         }
 
         var dataTask: URLSessionDataTask?
-        let configuration =
-        URLSessionConfiguration.background(withIdentifier: "noi")
-        let defaultSession = URLSession(configuration: configuration)
-        dataTask?.cancel()
+        let defaultSession = URLSession(configuration: .default)
 
         dataTask =
             defaultSession.dataTask(with: request) { data, response, error in
@@ -183,16 +180,21 @@ private extension Noi {
                 }
                 if error != nil {
                     delegate?.onNoiError(.network)
-                } else if
-                    let data = data,
-                    let response = response as? HTTPURLResponse,
-                    response.statusCode == 200 {
-                    guard let model = self.getParsedModel(data, at: path) else {
-                        delegate?.onNoiError(.badParsing)
+                } else {
+                    guard  let data = data, let response = response as? HTTPURLResponse else {
+                        delegate?.onNoiError(.server)
                         return
                     }
-                    successCallback(model)
+                    if (response.statusCode >= 200 && response.statusCode <= 299) {
+                        guard let model = self.getParsedModel(data, at: path) else {
+                            delegate?.onNoiError(.badParsing)
+                            return
+                        }
+                        successCallback(model)
+                    } else {
+                        delegate?.onNoiError(.unknown)
                     }
+                }
         }
         dataTask?.resume()
     }
@@ -211,7 +213,10 @@ private extension Noi {
             } else {
                 return nil
             }
-        } catch {
+        } catch let error {
+            #if DEBUG
+                print(error)
+            #endif
             return nil
         }
     }

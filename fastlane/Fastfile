@@ -14,10 +14,8 @@
 # update_fastlane
 
 default_platform(:ios)
-podspec_name = "noi.podspec"
 
 platform :ios do
-
   desc "Release a new version with a patch bump_type"
   lane :patch do
     release("patch")
@@ -35,6 +33,7 @@ platform :ios do
 
   def release(type)
     pod_lib_lint
+    podspec_name = "Noi.podspec"    
     version = version_bump_podspec(path: podspec_name,
                                    bump_type: type)
     git_add(path: podspec_name)
